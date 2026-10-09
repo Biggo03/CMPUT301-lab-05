@@ -15,6 +15,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         val cityRepository = CityRepository()
 
         setContent {
@@ -25,6 +26,9 @@ class MainActivity : ComponentActivity() {
                         onAddCity = { cityRepository.addCity(it) },
                         onUpdateCity = { oldCity, updatedCity ->
                             cityRepository.updateCity(oldCity, updatedCity)
+                        },
+                        onDeleteCity = { city ->
+                            cityRepository.deleteCity(city)
                         },
                         modifier = Modifier.padding(innerPadding)
                     )
